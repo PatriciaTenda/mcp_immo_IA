@@ -1,0 +1,11 @@
+fastmcp
+langchain
+uvicorn
+python-dotenv
+pandas
+pandas-stubs
+scikit-learn
+joblib
+scikit-learn-stubs
+joblib-stubs
+matplotlib

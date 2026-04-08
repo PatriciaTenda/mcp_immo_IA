@@ -8,49 +8,23 @@ Ce document décrit l'intégration et l'utilisation du serveur MCP (Model Contex
 ## 🚀 Démarrage rapide
 
 ### Prérequis
-- Node.js 16+
-- npm ou yarn
+- python 3.10+
 
 ### Installation
 ```bash
-npm install
-npm start
+    pip install fastmcp
+```
+##  Utilisation
+```bash
+    python main_mcp.py
 ```
 
-## 🔧 Configuration
-
-Configurez les variables d'environnement dans `.env` :
-```
-MCP_PORT=3000
-MCP_API_KEY=your_key_here
-```
-
-## 📚 Utilisation
-
-### Connection au serveur
-```javascript
-const mcp = require('./mcp-server');
-mcp.connect();
-```
-
-### Endpoints principaux
-- `POST /api/data` - Envoyer des données
-- `GET /api/status` - Vérifier le statut
-
-## 🗂️ Structure du projet
+##  Structure du module mcp_server
 
 ```
-MCP_server/
-├── src/
-├── config/
-├── tests/
+mcp_server/
+├── tools/
+├── services/
+├── main_mcp.py
 └── README_mcp.md
 ```
-
-## 📝 Logs et debugging
-
-Les logs sont disponibles dans `./logs/`
-
-## 🤝 Support
-
-Pour toute question, consultez la documentation officielle MCP.

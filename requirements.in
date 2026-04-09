@@ -9,3 +9,8 @@ joblib
 scikit-learn-stubs
 joblib-stubs
 matplotlib
+pytest
+langchain-mcp-adapters
+langchain
+langchain-mistralai
+langsmith

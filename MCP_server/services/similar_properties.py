@@ -24,12 +24,13 @@ def find_similar_properties(
     5. Retourne les top_n résultats
     """
 
+    # Chargement des données csv
     df = pd.read_csv(
         DATA_DIR / "dvf_final_2020_2025.csv",
         dtype={"Code postal": str, "Code departement": str, "code_insee": str}
     )
 
-    # Filtre 1 : même zone et même type
+    # Filtre 1 : même zone c'est à dire par code postal et même type de bien
     mask = (
         (df["Code postal"] == code_postal) &
         (df["Type local"] == type_local)

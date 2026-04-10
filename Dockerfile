@@ -7,7 +7,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copier le code source
-COPY mcp_immo_IA/mcp_server/ mcp_server/
+COPY mcp_server/ mcp_server/
 
 # Copier le modèle ML (1.8 MB)
 COPY artefacts/ artefacts/

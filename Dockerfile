@@ -7,10 +7,10 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copier le code source
-COPY mcp_server/ mcp_server/
+COPY mcp_immo_IA/mcp_server/ mcp_server/
 
 # Copier le modèle ML (1.8 MB)
-COPY artefacts/ artefacts/
+COPY mcp_immo_IA/artefacts/ artefacts/
 
 # Le dossier data/ sera monté en volume (CSV trop gros pour l'image)
 # Volume attendu : /app/data/dvf_final_2020_2025.csv

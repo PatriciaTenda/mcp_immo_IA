@@ -17,7 +17,8 @@ spec:
         - name: ghcr-secret
       containers:
         - name: mcp-immo-ia
-          image: ghcr.io/patriciatenda/mcp_immo_ia:main
+          image: ghcr.io/patriciatenda/mcp_immo_ia:v2
+          imagePullPolicy: Always
           ports:
             - containerPort: 8000
           envFrom:

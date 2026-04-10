@@ -1,0 +1,16 @@
+services:
+  mcp-server:
+    container_name: mcp-server-prod
+    build:
+      context: .
+      dockerfile: Dockerfile
+      tags:
+        - mcp-server:1.0.0
+    image: mcp-server:1.0.0
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data/dvf_final_2020_2025.csv:/app/data/dvf_final_2020_2025.csv:ro
+    env_file:
+      - .env
+    restart: unless-stopped

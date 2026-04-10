@@ -83,40 +83,45 @@ Il expose un modèle d’estimation DVF via un serveur FastMCP, des outils d’a
 
 3. **Déployer le serveur** :
    ```yaml
-   apiVersion: apps/v1
-   kind: Deployment
-   metadata:
-     name: mcp-immo-ia-patricia-promise
-     namespace: mcp-immo-ia-patricia-promise
-   spec:
-     replicas: 1
-     selector:
-       matchLabels:
-         app: mcp-immo-ia
-     template:
-       metadata:
-         labels:
-           app: mcp-immo-ia
-       spec:
-         containers:
-         - name: mcp-immo-ia
-           image: ghcr.io/patriciatenda/mcp_immo_ia:main
-           ports:
-           - containerPort: 8000
-           volumeMounts:
-           - name: data
-             mountPath: /app/data
-         imagePullSecrets:
-         - name: ghcr-secret
-         volumes:
-         - name: data
-           hostPath:
-             path: /chemin/vers/data
-   ```
+   aapiVersion: apps/v1
+    kind: Deployment
+    metadata:
+    name: mcp-immo-ia-patricia-promise
+    namespace: mcp-immo-ia-patricia-promise
+    spec:
+    replicas: 1
+    selector:
+        matchLabels:
+        app: mcp-immo-ia
+    template:
+        metadata:
+        labels:
+            app: mcp-immo-ia
+        spec:
+        imagePullSecrets:
+            - name: ghcr-secret
+        containers:
+            - name: mcp-immo-ia
+            image: ghcr.io/patriciatenda/mcp_immo_ia:v2
+            imagePullPolicy: Always
+            ports:
+                - containerPort: 8000
+            envFrom:
+                - secretRef:
+                    name: secret-env
+            volumeMounts:
+                - name: data
+                mountPath: /app/data
+        volumes:
+            - name: data
+            hostPath:
+                path: /raid/home/p4g4/mcp-immo-data
+                type: DirectoryOrCreate
+    ```
 
-4. **Exposer le service** :
-   ```yaml
-   apiVersion: v1
+    4. **Exposer le service** :
+    ```yaml
+    apiVersion: v1
    kind: Service
    metadata:
      name: mcp-immo-ia-service
@@ -129,7 +134,6 @@ Il expose un modèle d’estimation DVF via un serveur FastMCP, des outils d’a
        - protocol: TCP
          port: 8000
          targetPort: 8000
-         nodePort: 30800
    ```
 
 5. **Déployer** :
@@ -199,7 +203,7 @@ mcp_immo_IA/
 ├── docker-compose.yml            # (optionnel) Lancement multi-services
 ├── README.md                     # Documentation projet (ce fichier)
 ├── docs/                         # Documentation additionnelle (optionnel)
-├── k8s/                          # Manifests Kubernetes (optionnel)
+├── k3s/                          # Manifests Kubernetes (optionnel)
 └── ...                           # Autres dossiers/fichiers éventuels
 ```
 

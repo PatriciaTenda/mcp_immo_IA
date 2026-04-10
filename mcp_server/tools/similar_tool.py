@@ -1,5 +1,5 @@
 import json
-from mcp_immo_IA.mcp_server.services.similar_properties import find_similar_properties
+from mcp_server.services.similar_properties import find_similar_properties
 
 
 def get_similar_properties(

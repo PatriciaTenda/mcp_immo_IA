@@ -16,10 +16,8 @@ WORKING_DIR = str(BASE_DIR)
 # Configuration du serveur MCP
 MCP_SERVERS = {
     "immo_ia_server_mcp":{
-        "transport": "stdio",
-        "command": "python",
-        "args":     [str(BASE_DIR/"mcp_server"/"main_server.py")],
-        "cwd":      WORKING_DIR,
+        "transport": "sse",
+        "url":"http://localhost:8000/sse"
     }
 }
 

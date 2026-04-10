@@ -5,9 +5,9 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from fastmcp import FastMCP
-from mcp_immo_IA.mcp_server.tools.estimate_tool import estimate_price
-from mcp_immo_IA.mcp_server.tools.similar_tool import get_similar_properties
-from mcp_immo_IA.mcp_server.tools.neighborhood_tool import get_neighborhood_diagnostic
+from mcp_server.tools.estimate_tool import estimate_price
+from mcp_server.tools.similar_tool import get_similar_properties
+from mcp_server.tools.neighborhood_tool import get_neighborhood_diagnostic
 
 
 mcp = FastMCP("Immo IA Server MCP")

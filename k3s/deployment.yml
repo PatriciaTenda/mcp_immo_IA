@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-immo-ia-patricia-promise
+  namespace: mcp-immo-ia-patricia-promise
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mcp-immo-ia
+  template:
+    metadata:
+      labels:
+        app: mcp-immo-ia
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      containers:
+        - name: mcp-immo-ia
+          image: ghcr.io/patriciatenda/mcp_immo_ia:main
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - secretRef:
+                name: secret-env
+          volumeMounts:
+            - name: data
+              mountPath: /app/data
+      volumes:
+        - name: data
+          hostPath:
+            path: /raid/home/p4g4/mcp-immo-data
+            type: DirectoryOrCreate
